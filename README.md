@@ -266,9 +266,7 @@ if (object instanceof Car) {
 > Go
 
 ```go
-// only interface{} can type check
-var object interface{}
-if car, ok := object.(Car); ok {
+if car, ok := interface{}(object).(Car); ok {
     // object is Car
 }
 
@@ -636,6 +634,62 @@ void swap(int[] nums, int i, int j) {
 func swap(nums []int, i, j int) {
     nums[i], nums[j] = nums[j], nums[i]
 }
+```
+
+---
+
+## Error handling
+
+> Java
+
+```java
+try {
+    byte[] bytes = Files.readAllBytes(Path.of("test.txt"));
+} catch (IOException e) {
+    // handle file exception
+}
+```
+
+> Go
+
+```go
+bytes, err := os.ReadFile("test.text")
+if err != nil {
+    // handle file err
+}
+```
+
+---
+
+## OOP
+
+> Java
+
+```java
+interface Movable {
+    void move();
+}
+
+class Car implements Movable{
+    @Override
+    public void move() { }
+}
+
+Movable car = new Car();
+```
+
+> Go
+
+```go
+type Movable interface {
+	Move()
+}
+
+type Car struct{}
+
+func (c Car) Move() {}
+
+var car Movable = new(Car)
 ```
 
 ---
